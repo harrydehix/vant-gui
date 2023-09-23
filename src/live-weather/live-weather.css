@@ -1,0 +1,22 @@
+.live-weather{
+    width: 100%;
+    height: 100%;
+    padding: 4vw;
+    margin: 0rem !important;
+}
+
+.no-data{
+    opacity: .5;
+}
+
+.rain, .rain-rate{
+    background-color: rgb(31, 29, 98) !important;
+}
+
+.wind{
+    background-color: rgb(32, 19, 19) !important;
+}
+
+.sun{
+    background-color: rgb(43, 17, 35) !important;
+}
