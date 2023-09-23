@@ -18,9 +18,12 @@ const WeatherComponent : React.FunctionComponent<{
         <Card className={`${props.className} live-component ${props.data.val === null ? "no-data" : ""}`}>  
             <Typography textAlign={"left"} noWrap>
                     <Typography level="h1" noWrap className="value">
-                        <TextTransition springConfig={presets.stiff} inline>{props.data.node}</TextTransition>
+                        <TextTransition style={{ position: "static", bottom: "0" }} inline springConfig={presets.stiff}>
+                            {props.data.node}
+                        </TextTransition>
+                        <Typography level="h4" paddingLeft={1} noWrap className="unit" fontWeight={100}>{props.data.val === null ? "" : props.unit}</Typography>
                     </Typography>
-                    <Typography level="h4" noWrap className="unit" paddingLeft={1} fontWeight={100}>{props.data.val === null ? "" : props.unit}</Typography>
+                    
                 </Typography>
            <Typography startDecorator={props.icon}>{props.title}</Typography>
         </Card>

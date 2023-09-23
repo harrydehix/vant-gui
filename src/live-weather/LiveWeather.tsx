@@ -23,8 +23,32 @@ import LiveWeatherProps, { defaultProps } from "./LiveWeatherProps";
 const LiveWeather : React.FunctionComponent<LiveWeatherProps> = (options: LiveWeatherProps): JSX.Element => {
     const [connected, currentConditions, current] = useLiveWeather(options);
 
+    function hoursAndMinutes(time: string){
+        const splitted = time.split(':');
+        return {
+            hour: parseInt(splitted[0]),
+            minute: parseInt(splitted[1])
+        }
+    }
+
     function isItDaytime(){
-        return true;
+        if(!currentConditions.time || !currentConditions.sunset || !currentConditions.sunrise){
+            return false;
+        }
+
+        const currentTime = new Date(currentConditions.time);
+        const sunsetTime = new Date(currentTime);
+        const sunriseTime = new Date(currentTime);
+
+        const sunsetHoursAndMinutes = hoursAndMinutes(currentConditions.sunset);
+        sunsetTime.setHours(sunsetHoursAndMinutes.hour);
+        sunsetTime.setMinutes(sunsetHoursAndMinutes.minute);
+
+        const sunriseHoursAndMinutes = hoursAndMinutes(currentConditions.sunrise);
+        sunriseTime.setHours(sunriseHoursAndMinutes.hour);
+        sunriseTime.setMinutes(sunriseHoursAndMinutes.minute);
+
+        return currentTime.getTime() >= sunriseTime.getTime() && currentTime.getTime() <= sunsetTime.getTime();
     }
 
     return (

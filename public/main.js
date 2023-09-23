@@ -19,7 +19,8 @@ function createWindow() {
     //load the index.html from a url
     console.log(`Running in ${process.env.NODE_ENV} mode!`)
     if (process.env.NODE_ENV === "production") {
-        win.loadFile(__dirname + "/../build/index.html");
+        const file = __dirname.endsWith("build") ? path.join(__dirname, "index.hmtl") : path.join(__dirname, "../build/index.html");
+        win.loadFile(file);
     } else {
         win.loadURL("http://localhost:3000");
     }

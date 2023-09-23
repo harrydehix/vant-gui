@@ -12,9 +12,14 @@ import { BSCloudHailFill } from '@icongo/bs/lib/BSCloudHailFill';
 import { BSCloudRainFill } from '@icongo/bs/lib/BSCloudRainFill';
 import { BSCloudsFill } from '@icongo/bs/lib/BSCloudsFill';
 import { BSCloudSunFill } from '@icongo/bs/lib/BSCloudSunFill';
+import { BSMoonStarsFill } from '@icongo/bs/lib/BSMoonStarsFill';
+import { BSCloudMoonFill } from '@icongo/bs/lib/BSCloudMoonFill';
+
+
 import Stack from '@mui/joy/Stack';
 import CardContent from '@mui/joy/CardContent';
 import CardBackgroundVideo from "./CardBackgroundVideo";
+
 
 const Forecast : React.FunctionComponent<{
     forecast: LiveWeatherData<CurrentConditions["forecast"]>,
@@ -32,7 +37,7 @@ const Forecast : React.FunctionComponent<{
         switch(forecast.val){
             case null:
                 return <SensorsOffIcon style={style}/>;
-            case "Partly Cloudy": return <BSCloudSunFill style={style} />
+            case "Partly Cloudy": return day ? <BSCloudSunFill style={style} /> : <BSCloudMoonFill style={style} />
             case "Mostly Cloudy": return <BSCloudsFill style={style}/>
             case "Mostly Cloudy, Rain within 12 hours": return <BSCloudRainFill style={style}/>
             case "Mostly Cloudy, Snow within 12 hours": return <BSCloudSnowFill style={style}/> 
@@ -40,7 +45,7 @@ const Forecast : React.FunctionComponent<{
             case "Partly Cloudy, Rain within 12 hours": return <BSCloudRainFill style={style}/>
             case "Partly Cloudy, Rain or Snow within 12 hours": return <BSCloudHailFill style={style}/>
             case "Partly Cloudy, Snow within 12 hours": return <BSCloudSnowFill style={style}/>; 
-            case "Mostly Clear": return <BSSunFill style={style}/>;
+            case "Mostly Clear": return day ? <BSSunFill style={style} /> : <BSMoonStarsFill style={style} />
             default:
                 return ""
         }

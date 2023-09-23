@@ -37,9 +37,9 @@ const WindSpeed : React.FunctionComponent<{
             <Card className={`pressure live-component ${pressure.val === null ? "no-data" : ""}`} style={{width: "100%", height: "100%"}}>  
                 <Typography level="h2" startDecorator={trendIcon()} textAlign={"left"} noWrap>
                         <Typography level="h1" className="value">
-                            <TextTransition springConfig={presets.stiff} inline>{pressure.node}</TextTransition>
+                            <TextTransition style={{ position: "static", bottom: "0" }} springConfig={presets.stiff} inline>{pressure.node}</TextTransition>
                         </Typography>
-                    <Typography gutterBottom marginBottom={"-0.75rem"} level="h4" noWrap className="unit" paddingLeft={1} fontWeight={"100"}>{pressure.val === null ? "" : unit}</Typography>  
+                    <Typography gutterBottom marginBottom={"-0.75rem"} level="h4" paddingLeft={1} noWrap className="unit" fontWeight={"100"}>{pressure.val === null ? "" : unit}</Typography>  
                 </Typography>
             <Typography startDecorator={<CompressIcon/>}>{title} ({trend.str.toLowerCase()})</Typography>
             </Card>

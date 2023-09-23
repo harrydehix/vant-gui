@@ -10,7 +10,6 @@ module.exports = {
         },
         {
             name: '@electron-forge/maker-zip',
-            platforms: ['macOS', 'windows'],
         },
         {
             name: '@electron-forge/maker-deb',

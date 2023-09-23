@@ -28,7 +28,7 @@ const Rain : React.FunctionComponent<{
         <Card className={`rain-rate live-component ${rate.val === null ? "no-data" : ""}`}>  
             <Typography textAlign={"left"} noWrap>
                     <Typography level="h1" noWrap className="value">
-                        <TextTransition springConfig={presets.stiff} inline>{rate.node}</TextTransition>
+                        <TextTransition style={{ position: "static", bottom: "0" }} springConfig={presets.stiff} inline>{rate.node}</TextTransition>
                     </Typography>
                     <Typography level="h4" noWrap className="unit" paddingLeft={1} fontWeight={100}>{rate.val === null ? "" : unit + "/h"}</Typography>
                 </Typography>

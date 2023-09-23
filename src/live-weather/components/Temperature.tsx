@@ -49,9 +49,9 @@ const Temperature : React.FunctionComponent<{
         <Card className={`temperature live-component ${temperature.val === null ? "no-data" : ""}`}>  
             <Typography textAlign={"left"} noWrap>
                     <Typography level="h1" noWrap className="value" textColor={colorizeTemperature(temperature.val)}>
-                        <TextTransition springConfig={presets.stiff} inline>{temperature.node}</TextTransition>
+                        <TextTransition style={{ position: "static", bottom: "0" }} springConfig={presets.stiff} inline>{temperature.node}</TextTransition>
                     </Typography>
-                    <Typography level="h4" noWrap className="unit" paddingLeft={1} fontWeight={100}>{temperature.val === null ? "" : unit}</Typography>
+                    <Typography level="h4" paddingLeft={1} noWrap className="unit" fontWeight={100}>{temperature.val === null ? "" : unit}</Typography>
                 </Typography>
            <Typography startDecorator={<DeviceThermostatIcon/>}>{title}</Typography>
         </Card>
