@@ -7,6 +7,6 @@ ExecStart=sudo serve -s build -p 80
 
 Environment=PATH=/usr/bin:/usr/local/bin
 Environment=NODE_ENV=production
-WorkingDirectory=~/vant-gui
+WorkingDirectory=/home/harry/vant-gui
 
 [Install]
