@@ -55,7 +55,7 @@
         "electron:prod": "SET NODE_ENV=production&& electron .",
         "package": "electron-forge package",
         "make": "electron-forge make",
-        "server-https": "sudo serve -s build -p 443 --ssl-cert /etc/ssl/certs/public.crt --ssl-key /etc/ssl/certs/private.key",
+        "server-https": "sudo serve -s build -p 443 --ssl-cert /etc/ssl/certs/public.cert --ssl-key /etc/ssl/certs/private.key",
         "server-http": "sudo serve -s build -p 80",
         "service-setup": "sudo bash initialize_vant_gui_service.bash && sudo systemctl daemon-reload && sudo systemctl enable vantgui && sudo systemctl start vantgui"
     },
@@ -78,6 +78,7 @@
         ]
     },
     "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@electron-forge/cli": "^6.4.2",
         "@electron-forge/maker-deb": "^6.4.2",
         "@electron-forge/maker-dmg": "^6.4.2",
