@@ -125,7 +125,7 @@ const LiveWeather : React.FunctionComponent<LiveWeatherProps> = (options: LiveWe
             <Stack justifyContent="center"
             alignItems="center">
                 <LinearProgress style={{width: "100%"}}/>
-                <Typography level="title-lg" fontWeight={100} paddingTop={5}>Connecting to weather api...</Typography>
+                <Typography level="title-lg" fontWeight={100} paddingTop={5}>Connecting to harry's station...</Typography>
             </Stack>
         </Stack>
     );
