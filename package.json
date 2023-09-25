@@ -54,7 +54,10 @@
         "electron:dev": "SET NODE_ENV=development&& electron .",
         "electron:prod": "SET NODE_ENV=production&& electron .",
         "package": "electron-forge package",
-        "make": "electron-forge make"
+        "make": "electron-forge make",
+        "server-https": "sudo serve -s build -p 443 --ssl-cert /etc/ssl/certs/public.crt --ssl-key /etc/ssl/certs/private.key",
+        "server-http": "sudo serve -s build -p 80",
+        "service-setup": "sudo bash initialize_vant_gui_service.bash && sudo systemctl daemon-reload && sudo systemctl enable vantgui && sudo systemctl start vantgui"
     },
     "eslintConfig": {
         "extends": [
