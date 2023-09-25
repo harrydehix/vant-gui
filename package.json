@@ -23,10 +23,12 @@
         "@types/superagent": "^4.1.18",
         "dateformat": "^5.0.3",
         "electron-squirrel-startup": "^1.0.0",
+        "finalhandler": "^1.2.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-scripts": "5.0.1",
         "react-text-transition": "^3.1.0",
+        "serve-static": "^1.15.0",
         "superagent": "^8.1.2",
         "typescript": "^4.9.5",
         "validator": "^13.11.0",
@@ -55,8 +57,7 @@
         "electron:prod": "SET NODE_ENV=production&& electron .",
         "package": "electron-forge package",
         "make": "electron-forge make",
-        "server-https": "sudo serve -s build -p 443 --ssl-cert /etc/ssl/certs/public.cert --ssl-key /etc/ssl/certs/private.key",
-        "server-http": "sudo serve -s build -p 80",
+        "server": "node server.js",
         "service-setup": "sudo bash initialize_vant_gui_service.bash && sudo systemctl daemon-reload && sudo systemctl enable vantgui && sudo systemctl start vantgui"
     },
     "eslintConfig": {
