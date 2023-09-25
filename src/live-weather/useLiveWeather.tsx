@@ -108,6 +108,7 @@ const useLiveWeather = (options : LiveWeatherProps) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
+            console.log(`Requesting weather data from '${options.api}'!`);
             superagent
                 .get(options.api + "/v1/current")
                 .query({ rainUnit: options.units.rain })
