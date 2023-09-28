@@ -8,6 +8,7 @@ export default interface LiveWeatherProps{
     nullReplacement?: React.ReactNode,
     nullReplacementString?: string,
     apiKey: string,
+    maximumUpdateFailCount: number,
 }
 
 export const defaultProps: Partial<LiveWeatherProps> = {

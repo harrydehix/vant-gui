@@ -57,6 +57,7 @@ const App: React.FunctionComponent<{}> = () => {
                 wind: process.env.REACT_APP_WIND_UNIT as WindUnit,
                 solarRadiation: process.env.REACT_APP_SOLAR_RADIATION_UNIT as SolarRadiationUnit,
             }}
+            maximumUpdateFailCount={3}
             interval={1}
         />
 }

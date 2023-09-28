@@ -6,6 +6,7 @@ import dateFormat from "dateformat";
 import LiveWeatherProps from "./LiveWeatherProps";
 
 const useLiveWeather = (options : LiveWeatherProps) => {
+    const [failedUpdates, setFailedUpdates] = useState<number>(0);
     const [connected, setConnected] = useState<boolean>(false);
     const [currentConditions, setCurrentConditions] = useState<CurrentConditions>({
         altimeter: null,
@@ -107,6 +108,17 @@ const useLiveWeather = (options : LiveWeatherProps) => {
     }
 
     useEffect(() => {
+        function updateFail(){
+            setFailedUpdates(failedUpdates + 1);
+            if(failedUpdates > options.maximumUpdateFailCount){
+                setConnected(false);
+            }
+        }
+
+        function validUpdate(){
+            setFailedUpdates(0);
+            setConnected(true);
+        }
         const interval = setInterval(() => {
             console.log(`Requesting weather data from '${options.api}'!`);
             superagent
@@ -127,19 +139,19 @@ const useLiveWeather = (options : LiveWeatherProps) => {
                         } else {
                             console.error("Is your api running?");
                         }
-                        setConnected(false);
+                        updateFail();
                     } else if (res && res.body && res.body.data) {
-                        setConnected(true);
                         setCurrentConditions(res.body.data);
+                        validUpdate();
                     } else {
-                        setConnected(false);
                         console.error("Failed to get realtime record!");
+                        updateFail();
                     }
                 });
         }, options.interval! * 1000);
 
         return () => clearInterval(interval);
-    }, [options.api, options.interval, options.apiKey, options.units.pressure, options.units.rain, options.units.solarRadiation, options.units.temperature, options.units.wind]);
+    }, [options.api, options.interval, options.apiKey, options.units.pressure, options.units.rain, options.units.solarRadiation, options.units.temperature, options.units.wind, options.maximumUpdateFailCount, failedUpdates]);
 
     return [connected, currentConditions, current] as [
         boolean,
