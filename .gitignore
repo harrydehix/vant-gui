@@ -20,6 +20,7 @@ out
 .env.test.local
 .env.production.local
 .env
+.envdocker
 /ref
 
 
@@ -29,3 +30,5 @@ yarn-error.log*
 
 *.key
 *.crt
+
+logs/

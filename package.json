@@ -32,7 +32,7 @@
         "superagent": "^8.1.2",
         "typescript": "^4.9.5",
         "validator": "^13.11.0",
-        "vant-environment": "^1.0.6",
+        "vant-environment": "^2.0.1",
         "web-vitals": "^2.1.4",
         "workbox-background-sync": "^6.6.0",
         "workbox-broadcast-update": "^6.6.0",
@@ -57,8 +57,7 @@
         "electron:prod": "SET NODE_ENV=production&& electron .",
         "package": "electron-forge package",
         "make": "electron-forge make",
-        "server": "node server.js",
-        "service-setup": "sudo bash initialize_vant_gui_service.bash && sudo systemctl daemon-reload && sudo systemctl enable vantgui && sudo systemctl start vantgui"
+        "docker-image": "sudo docker build -t vant-gui ."
     },
     "eslintConfig": {
         "extends": [
